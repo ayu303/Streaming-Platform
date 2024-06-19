@@ -5,6 +5,7 @@ import express from 'express'
 import { Server as SocketIO } from 'socket.io'
 
 const app = express();
+const port = process.env.PORT || 4000;
 const server = http.createServer(app);
 const io = new SocketIO(server)
 
@@ -68,4 +69,6 @@ io.on('connection', socket => {
     });
 });
 
-server.listen(3000, () => console.log(`HTTP Server is running on PORT 3000`));
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+  })
